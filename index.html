@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Відмінки — Ukrainian Noun Cases</title>
+<title>Grammar Soloviyna — Ukrainian Noun Cases</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -431,6 +431,144 @@
     .card-cyrillic { font-size: 1.8rem; }
     .flashcard { padding: 1.5rem 1rem; min-height: 180px; }
   }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-it-works {
+    background: var(--blue-dim);
+    border: 1px solid rgba(91, 138, 240, 0.25);
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .how-it-works strong { color: var(--text); }
+  .how-diff {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    background: rgba(255,255,255,0.05);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .how-example {
+    margin-top: 0.4rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid rgba(91, 138, 240, 0.15);
+    font-size: 0.88rem;
+  }
+
+  /* ─── REFERENCE: Intro text ─── */
+  .ref-intro {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+  .ref-intro strong { color: var(--text); }
+  .ref-intro em { color: var(--blue); font-style: italic; }
+
+  /* ─── REFERENCE: Case explanation cards ─── */
+  .case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .case-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .case-ukr {
+    color: var(--text-muted);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin-left: 0.4rem;
+  }
+  .case-desc {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 0.6rem;
+  }
+  .case-desc strong { color: var(--text); }
+  .case-desc em { color: var(--blue); }
+  .case-example {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+  .ex-ukr {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+  }
+  .ex-ukr strong { color: var(--accent); }
+  .ex-eng {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .ex-eng strong { color: var(--accent-dim); font-style: normal; }
+  .case-prepositions {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--border);
+  }
+  .case-prepositions strong { color: var(--blue); }
+
+  /* ─── CARD HINT (contextual case tip on flashcard) ─── */
+  .card-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 0.25rem;
+    line-height: 1.4;
+  }
+
+  /* ─── DIFF DISPLAY (nom → case transformation) ─── */
+  .diff-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.15rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .diff-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    margin-right: 0.3rem;
+  }
+  .diff-stem {
+    color: var(--text-dim);
+  }
+  .diff-removed {
+    color: var(--wrong);
+    font-weight: 700;
+  }
+  .diff-added {
+    color: var(--correct);
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
@@ -472,6 +610,11 @@
       </div>
     </div>
 
+    <div class="how-it-works">
+      You'll see a noun in its <strong>base form</strong> (Nominative). Change its ending to match the requested case.
+      <div class="how-example">e.g. Accusative: <span class="how-diff">книг<span class="diff-removed">а</span> → книг<span class="diff-added">у</span></span></div>
+    </div>
+
     <div class="score-bar">
       <div class="score-item correct-score">✓ <span class="num" id="q-correct">0</span></div>
       <div class="score-item wrong-score">✗ <span class="num" id="q-wrong">0</span></div>
@@ -485,6 +628,7 @@
         <div class="card-cyrillic" id="q-word"></div>
         <div class="card-english" id="q-english"></div>
         <div class="card-prompt" id="q-prompt"></div>
+        <div class="card-hint" id="q-hint"></div>
       </div>
     </div>
 
@@ -529,6 +673,11 @@
       </div>
     </div>
 
+    <div class="how-it-works">
+      Pick the correct case form of the noun.
+      <div class="how-example">e.g. Accusative: <span class="how-diff">книг<span class="diff-removed">а</span> → книг<span class="diff-added">у</span></span></div>
+    </div>
+
     <div class="score-bar">
       <div class="score-item correct-score">✓ <span class="num" id="mc-correct">0</span></div>
       <div class="score-item wrong-score">✗ <span class="num" id="mc-wrong">0</span></div>
@@ -542,6 +691,7 @@
         <div class="card-cyrillic" id="mc-word"></div>
         <div class="card-english" id="mc-english"></div>
         <div class="card-prompt" id="mc-prompt"></div>
+        <div class="card-hint" id="mc-hint"></div>
       </div>
     </div>
 
@@ -554,18 +704,126 @@
 
   <!-- ═══════════ REFERENCE ═══════════ -->
   <div class="view" id="view-ref">
+
     <div class="ref-section">
-      <h2>The 7 Ukrainian Cases</h2>
+      <h2>How Cases Work</h2>
+      <p class="ref-intro">In English, word order tells you who does what: <em>"The girl sees the boy"</em> vs. <em>"The boy sees the girl."</em> In Ukrainian, <strong>word endings</strong> do that job instead. These ending changes are called <strong>cases</strong> (відмінки). Ukrainian has 7 of them. Each case answers a different question and serves a different role in the sentence.</p>
+      <p class="ref-intro mt">When you look up a word in a dictionary, you find its <strong>Nominative</strong> form — that's the base form. All other cases modify the ending of that base form.</p>
+    </div>
+
+    <div class="ref-section">
+      <h2>The 7 Cases at a Glance</h2>
       <table class="ref-table">
-        <tr><th>Case</th><th>Ukrainian</th><th>Question</th><th>English hint</th></tr>
-        <tr><td>Nominative</td><td>Називний</td><td>Хто? Що?</td><td>Subject — who/what?</td></tr>
+        <tr><th>Case</th><th>Ukrainian</th><th>Question</th><th>English equivalent</th></tr>
+        <tr><td>Nominative</td><td>Називний</td><td>Хто? Що?</td><td>Subject — who/what? (base form)</td></tr>
         <tr><td>Genitive</td><td>Родовий</td><td>Кого? Чого?</td><td>"of …" / possession / absence</td></tr>
-        <tr><td>Dative</td><td>Давальний</td><td>Кому? Чому?</td><td>"to …" / indirect object</td></tr>
+        <tr><td>Dative</td><td>Давальний</td><td>Кому? Чому?</td><td>"to / for …" / indirect object</td></tr>
         <tr><td>Accusative</td><td>Знахідний</td><td>Кого? Що?</td><td>Direct object</td></tr>
         <tr><td>Instrumental</td><td>Орудний</td><td>Ким? Чим?</td><td>"with / by means of …"</td></tr>
-        <tr><td>Locative</td><td>Місцевий</td><td>На кому/чому?</td><td>"in / on / at …"</td></tr>
-        <tr><td>Vocative</td><td>Кличний</td><td>—</td><td>Direct address</td></tr>
+        <tr><td>Locative</td><td>Місцевий</td><td>На кому/чому?</td><td>"in / on / at …" (always with a preposition)</td></tr>
+        <tr><td>Vocative</td><td>Кличний</td><td>—</td><td>Direct address ("Hey, …!")</td></tr>
       </table>
+    </div>
+
+    <div class="ref-section">
+      <h2>Each Case Explained</h2>
+
+      <div class="case-card">
+        <h3>Nominative <span class="case-ukr">Називний</span></h3>
+        <p class="case-desc">The <strong>base form</strong> — the dictionary form of the word. Used for the subject of a sentence (who or what performs the action).</p>
+        <div class="case-example">
+          <div class="ex-ukr"><strong>Сестра</strong> читає книгу.</div>
+          <div class="ex-eng"><strong>Sister</strong> reads a book.</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <h3>Genitive <span class="case-ukr">Родовий</span></h3>
+        <p class="case-desc">Shows <strong>possession</strong> ("of something"), <strong>absence</strong> ("there is no…"), origin ("from…"), or quantity. Think of English <em>'s</em> or <em>"of."</em></p>
+        <div class="case-example">
+          <div class="ex-ukr">Конституція <strong>України</strong>.</div>
+          <div class="ex-eng">The Constitution <strong>of Ukraine</strong>.</div>
+        </div>
+        <div class="case-example">
+          <div class="ex-ukr">Немає <strong>води</strong>.</div>
+          <div class="ex-eng">There is no <strong>water</strong>.</div>
+        </div>
+        <p class="case-prepositions">Common prepositions: <strong>без</strong> (without), <strong>від</strong> (from), <strong>до</strong> (to/until), <strong>з</strong> (from/out of), <strong>після</strong> (after)</p>
+      </div>
+
+      <div class="case-card">
+        <h3>Dative <span class="case-ukr">Давальний</span></h3>
+        <p class="case-desc">The <strong>indirect object</strong> — the person or thing <em>receiving</em> something. Think "to whom?" or "for whom?" The Ukrainian name comes from <em>давати</em> (to give).</p>
+        <div class="case-example">
+          <div class="ex-ukr">Я дав книгу <strong>сестрі</strong>.</div>
+          <div class="ex-eng">I gave a book <strong>to my sister</strong>.</div>
+        </div>
+        <div class="case-example">
+          <div class="ex-ukr"><strong>Мамі</strong> подобається музика.</div>
+          <div class="ex-eng"><strong>Mom</strong> likes music. (lit: Music is pleasing <strong>to Mom</strong>.)</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <h3>Accusative <span class="case-ukr">Знахідний</span></h3>
+        <p class="case-desc">The <strong>direct object</strong> — the thing being acted upon. Used with most action verbs.</p>
+        <div class="case-example">
+          <div class="ex-ukr">Я люблю <strong>Україну</strong>.</div>
+          <div class="ex-eng">I love <strong>Ukraine</strong>.</div>
+        </div>
+        <div class="case-example">
+          <div class="ex-ukr">Хлопець читає <strong>книгу</strong>.</div>
+          <div class="ex-eng">The boy reads <strong>a book</strong>.</div>
+        </div>
+        <p class="case-prepositions">Common prepositions: <strong>в/у</strong> (into), <strong>на</strong> (onto), <strong>за</strong> (for), <strong>через</strong> (through/because of)</p>
+      </div>
+
+      <div class="case-card">
+        <h3>Instrumental <span class="case-ukr">Орудний</span></h3>
+        <p class="case-desc">Shows the <strong>tool or means</strong> by which something is done ("with what?"). Also used to say what you do professionally, or what's located above/below something.</p>
+        <div class="case-example">
+          <div class="ex-ukr">Я пишу <strong>ручкою</strong>.</div>
+          <div class="ex-eng">I write <strong>with a pen</strong>.</div>
+        </div>
+        <div class="case-example">
+          <div class="ex-ukr">Вона працює <strong>вчителькою</strong>.</div>
+          <div class="ex-eng">She works <strong>as a teacher</strong>.</div>
+        </div>
+        <p class="case-prepositions">Common prepositions: <strong>з</strong> (with), <strong>за</strong> (behind), <strong>між</strong> (between), <strong>над</strong> (above), <strong>під</strong> (under)</p>
+      </div>
+
+      <div class="case-card">
+        <h3>Locative <span class="case-ukr">Місцевий</span></h3>
+        <p class="case-desc">Indicates <strong>location</strong> — where something is or happens. This case <strong>always requires a preposition</strong> (that's why it's sometimes called "Prepositional" in other Slavic languages).</p>
+        <div class="case-example">
+          <div class="ex-ukr">Сумка в <strong>машині</strong>.</div>
+          <div class="ex-eng">The bag is in <strong>the car</strong>.</div>
+        </div>
+        <div class="case-example">
+          <div class="ex-ukr">Ми живемо в <strong>місті</strong>.</div>
+          <div class="ex-eng">We live in <strong>a city</strong>.</div>
+        </div>
+        <p class="case-prepositions">Always with a preposition: <strong>в/у</strong> (in), <strong>на</strong> (on/at), <strong>по</strong> (along/after), <strong>при</strong> (by/near)</p>
+      </div>
+
+      <div class="case-card">
+        <h3>Vocative <span class="case-ukr">Кличний</span></h3>
+        <p class="case-desc">Used when <strong>directly addressing</strong> someone or something. English doesn't change words for this — Ukrainian does.</p>
+        <div class="case-example">
+          <div class="ex-ukr"><strong>Мамо</strong>, де ти?</div>
+          <div class="ex-eng"><strong>Mom</strong>, where are you?</div>
+        </div>
+        <div class="case-example">
+          <div class="ex-ukr">Слава <strong>Україні</strong>! — Героям слава!</div>
+          <div class="ex-eng">Glory to <strong>Ukraine</strong>! — Glory to the heroes!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ref-section">
+      <h2>What Are Declensions?</h2>
+      <p class="ref-intro">Declensions are <strong>groups of nouns that follow the same pattern</strong> of ending changes. If you know what group a noun belongs to, you can predict all its case forms. Ukrainian has 4 groups — most are determined by the noun's gender and its ending in Nominative.</p>
+      <p class="ref-intro mt">Don't try to memorize all the tables at once. Start by practicing common nouns in the flashcard modes, and the patterns will start to feel natural.</p>
     </div>
 
     <div class="ref-section" id="ref-tables"></div>
@@ -585,6 +843,14 @@ const CASE_FULL = {
 const CASE_Q = {
   Gen:'Кого? Чого?', Dat:'Кому? Чому?', Acc:'Кого? Що?',
   Ins:'Ким? Чим?', Loc:'На кому/чому?', Voc:'(address)'
+};
+const CASE_HINTS = {
+  Gen: 'Think "of …" — possession, absence, or "from"',
+  Dat: 'Think "to / for …" — who receives something?',
+  Acc: 'The direct object — what is being acted upon?',
+  Ins: 'Think "with / by …" — what tool or means?',
+  Loc: 'Think "in / on / at …" — always needs a preposition',
+  Voc: 'Calling someone directly — "Hey, …!"',
 };
 
 // Each noun: [nom, gen, dat, acc, ins, loc, voc, english, gender, declension, subgroup]
@@ -663,6 +929,26 @@ function shuffle(arr) {
 }
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 function normalize(s) { return s.toLowerCase().replace(/'/g, "'").replace(/[ʼ`'ʹ]/g, "'").trim(); }
+
+// Build a visual diff showing nom → case with red (removed) / green (added)
+function buildDiff(nom, declined) {
+  // Find the common prefix (stem)
+  let common = 0;
+  const minLen = Math.min(nom.length, declined.length);
+  while (common < minLen && nom[common] === declined[common]) common++;
+  // Sometimes the stem change goes deeper (e.g. книга→книзі), back up to find a reasonable split
+  // But for most cases, the common prefix works well enough
+  const stem = nom.slice(0, common);
+  const removedEnd = nom.slice(common);
+  const addedEnd = declined.slice(common);
+
+  let html = `<span class="diff-stem">${stem}</span>`;
+  if (removedEnd) html += `<span class="diff-removed">${removedEnd}</span>`;
+  html += ` → `;
+  html += `<span class="diff-stem">${stem}</span>`;
+  if (addedEnd) html += `<span class="diff-added">${addedEnd}</span>`;
+  return html;
+}
 
 // ═══════════════════════════════════════════════════
 // REFERENCE TABLES
@@ -785,7 +1071,7 @@ function newQuizCard() {
   document.getElementById('q-word').textContent = noun[0];
   document.getElementById('q-english').textContent = `"${noun[7]}"`;
   document.getElementById('q-prompt').innerHTML = `→ <span class="case-name">${CASE_FULL[caseAbbr]}</span> <span class="case-hint">${CASE_Q[caseAbbr]||''}</span>`;
-
+  document.getElementById('q-hint').textContent = CASE_HINTS[caseAbbr] || '';
   document.getElementById('q-input').value = '';
   document.getElementById('q-input').disabled = false;
   document.getElementById('q-feedback').textContent = '';
@@ -877,6 +1163,7 @@ function newMCCard() {
   document.getElementById('mc-word').textContent = noun[0];
   document.getElementById('mc-english').textContent = `"${noun[7]}"`;
   document.getElementById('mc-prompt').innerHTML = `→ <span class="case-name">${CASE_FULL[caseAbbr]}</span> <span class="case-hint">${CASE_Q[caseAbbr]||''}</span>`;
+  document.getElementById('mc-hint').textContent = CASE_HINTS[caseAbbr] || '';
   document.getElementById('mc-feedback').textContent = '';
   document.getElementById('mc-feedback').className = 'feedback';
   document.getElementById('mc-next').style.display = 'none';
